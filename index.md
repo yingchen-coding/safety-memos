@@ -121,11 +121,73 @@ Without these, safeguards will appear robust in benchmarks while quietly failing
 
 ---
 
-## 6. Closing
+## 6. Counter-Arguments: In Defense of Single-Turn Evaluation
+
+A balanced view requires acknowledging the legitimate reasons single-turn benchmarks remain valuable.
+
+### (a) Cost efficiency
+
+Multi-turn evaluation is 5-10x more expensive per sample. For budget-constrained teams, single-turn coverage may be the only feasible option. A broad single-turn sweep may catch more issues than a narrow multi-turn deep-dive.
+
+### (b) Reproducibility
+
+Single-turn benchmarks are deterministic and reproducible. Multi-turn trajectories introduce variance from model sampling, making results harder to compare across runs or teams.
+
+### (c) Most attacks are still single-turn
+
+The majority of observed jailbreaks in the wild are single-turn prompt injections. Multi-turn attacks require more sophistication and are less common. Optimizing for the common case has merit.
+
+### (d) Baseline establishment
+
+Single-turn benchmarks establish a necessary (if not sufficient) baseline. A model that fails single-turn safety tests will certainly fail multi-turn tests. Single-turn is a prerequisite, not a competitor.
+
+---
+
+## 7. Limitations of This Thesis
+
+This memo has its own blind spots:
+
+### (a) Multi-turn evaluation introduces noise
+
+Trajectory-level scoring is inherently noisier. Small perturbations in early turns can cascade into large outcome differences. This makes regression detection harder and increases false positive rates.
+
+### (b) Computational cost is real
+
+10-turn evaluations cost 10x. For models evaluated at scale, this cost may be prohibitive. The field needs cost-effective approximations to multi-turn evaluation.
+
+### (c) Defining "trajectory failure" is hard
+
+Single-turn has clear success criteria. Multi-turn requires defining what constitutes a "failed trajectory" — a judgment that may vary by context, stakeholder, and harm domain.
+
+### (d) Adversarial multi-turn is still nascent
+
+The attack surface for multi-turn is less well-mapped than single-turn. We may be optimizing for the wrong threats.
+
+---
+
+## 8. Open Questions for Future Work
+
+This memo raises more questions than it answers:
+
+1. **What's the minimum trajectory length needed to detect most drift?** Can we get 80% of multi-turn value with 3-turn evaluation?
+
+2. **Can we distill trajectory-level signals into single-turn proxies?** If so, we get the best of both worlds.
+
+3. **How do we handle the cost-coverage tradeoff?** Adaptive sampling? Importance weighting?
+
+4. **When is multi-turn evaluation overkill?** For non-agentic deployments, is single-turn sufficient?
+
+5. **How do we standardize trajectory-level benchmarks?** Without standardization, results are incomparable across teams.
+
+---
+
+## 9. Closing
 
 If we continue to rely on single-turn safety benchmarks, we will keep being surprised by failures that were structurally invisible to our evaluations.
 
 Agentic safety requires moving our evaluation lens from snapshots to trajectories.
+
+But this shift must be pragmatic: acknowledging costs, tolerating noise, and recognizing that single-turn benchmarks remain a valuable (if incomplete) foundation.
 
 ---
 

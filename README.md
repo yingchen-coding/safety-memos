@@ -1,5 +1,7 @@
 # Safety Memos
 
+[![CI](https://github.com/yingchen-coding/safety-memos/actions/workflows/ci.yml/badge.svg)](https://github.com/yingchen-coding/safety-memos/actions/workflows/ci.yml)
+
 Short research memos on agentic safety and safeguards.
 
 ## Contents

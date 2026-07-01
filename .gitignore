@@ -4,5 +4,3 @@ __pycache__/
 _site/
 .jekyll-cache/
 .claude/
-
-scripts/pr_review_check.sh

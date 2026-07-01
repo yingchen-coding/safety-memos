@@ -34,14 +34,6 @@ Read a memo, then follow the implementation path:
 3. Use [safety-harness](https://github.com/yingchen-coding/safety-harness) to stress-test, pin regressions, and gate releases.
 4. Use [agentguard](https://github.com/yingchen-coding/agentguard) when the risk lives in agent definitions, tool grants, hooks, or commands.
 
-## Local Review
-
-```bash
-scripts/pr_review_check.sh
-```
-
-This checks internal links, public-surface hygiene, and the tracked PR review gate.
-
 ## Related Projects
 
 - [when-rlhf-fails-quietly](https://github.com/yingchen-coding/when-rlhf-fails-quietly) — Evaluating silent alignment failures

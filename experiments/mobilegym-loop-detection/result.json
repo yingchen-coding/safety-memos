@@ -1,0 +1,62 @@
+{
+  "source": {
+    "dataset": "gray311/mobilegym-trajectories-qwen3vl4b",
+    "canonical_url": "https://huggingface.co/datasets/gray311/mobilegym-trajectories-qwen3vl4b",
+    "paper_url": "https://arxiv.org/abs/2605.26114",
+    "license": "Apache-2.0",
+    "dataset_sha256": "effedfe83fff7b04c8255cd224dd1b757041823f75ef8626e63c01db612a8d31"
+  },
+  "sample_count": {
+    "trajectories": 116,
+    "unique_tasks": 57,
+    "repetitive_loop_trajectories": 84,
+    "non_loop_trajectories": 32,
+    "successful_trajectories": 1,
+    "clustered_bootstrap_resamples": 10000
+  },
+  "baseline": {
+    "definition": "two consecutive actions of the same action type",
+    "true_positive": 84,
+    "false_positive": 24,
+    "false_negative": 0,
+    "true_negative": 8,
+    "precision": 0.7777777777777778,
+    "recall": 1.0,
+    "false_positive_rate": 0.75,
+    "successful_trajectories_flagged": 0,
+    "actions_avoided_on_labeled_loops": 181
+  },
+  "treatment": {
+    "definition": "two consecutive actions with the same type and exact payload",
+    "true_positive": 84,
+    "false_positive": 4,
+    "false_negative": 0,
+    "true_negative": 28,
+    "precision": 0.9545454545454546,
+    "recall": 1.0,
+    "false_positive_rate": 0.125,
+    "successful_trajectories_flagged": 0,
+    "actions_avoided_on_labeled_loops": 100
+  },
+  "metrics": {
+    "precision_delta_percentage_points": 17.67676767676768,
+    "precision_delta_task_clustered_95_ci_pp": [
+      10.592410592410594,
+      25.15182186234818
+    ],
+    "false_positive_relative_reduction": 0.8333333333333334,
+    "replay_estimated_actions_avoided_on_labeled_loops": 100,
+    "actions_avoided_per_labeled_loop": 1.1904761904761905,
+    "paired_non_loop_baseline_only_false_alerts": 20,
+    "paired_non_loop_treatment_only_false_alerts": 0,
+    "mcnemar_exact_two_sided_p": 1.9073486328125e-06
+  },
+  "verdict": "BOUNDED_REPLAY_POSITIVE",
+  "limitations": [
+    "Offline replay does not establish online intervention or policy gains.",
+    "Only one trajectory succeeds, so success-preservation evidence is weak.",
+    "One policy release cannot establish cross-model transfer.",
+    "Actions avoided assume termination at the alert; recovery is unknown.",
+    "Exact payload identity may be brittle under interface perturbations."
+  ]
+}

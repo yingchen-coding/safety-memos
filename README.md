@@ -24,6 +24,8 @@ agent definition scanners.
 - [Why Single-Turn Safety Benchmarks Systematically Underestimate Agentic Risk](https://yingchen-coding.github.io/safety-memos/)
   A memo on why static, one-shot safety checks miss slow-burn failures that emerge across
   multi-turn agent trajectories.
+- [Exact Action Identity Reduces False Loop Alerts in MobileGym Replay](experiments/mobilegym-loop-detection/)
+  A reproducible public-dataset experiment comparing coarse and payload-specific loop alerts.
 - [Research Evolution Log](RESEARCH_EVOLUTION.md)
   A versioned record of hypotheses that failed, evidence upgrades, measured results, and claim
   boundaries. Only reproducible, public-safe milestones are included.

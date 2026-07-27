@@ -17,7 +17,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Install experiment dependency
+        run: python -m pip install -r experiments/mobilegym-loop-detection/requirements.txt
       - name: Check internal Markdown links
         run: python scripts/check_links.py
+      - name: Test experiment logic
+        run: python -m unittest discover -s tests
       - name: Verify research evolution artifacts
         run: python scripts/verify_research_evolution.py

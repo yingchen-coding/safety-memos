@@ -19,3 +19,5 @@ jobs:
           python-version: "3.12"
       - name: Check internal Markdown links
         run: python scripts/check_links.py
+      - name: Verify research evolution artifacts
+        run: python scripts/verify_research_evolution.py

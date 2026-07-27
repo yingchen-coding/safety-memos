@@ -26,6 +26,8 @@ agent definition scanners.
   multi-turn agent trajectories.
 - [Exact Action Identity Reduces False Loop Alerts in MobileGym Replay](experiments/mobilegym-loop-detection/)
   A reproducible public-dataset experiment comparing coarse and payload-specific loop alerts.
+- [PRM800K Replay: Targeting a Fixed Process-Review Budget](experiments/prm800k-selective-audit/)
+  A public-dataset replay of score-targeted review after outcome-only acceptance.
 - [Research Evolution Log](RESEARCH_EVOLUTION.md)
   A versioned record of hypotheses that failed, evidence upgrades, measured results, and claim
   boundaries. Only reproducible, public-safe milestones are included.

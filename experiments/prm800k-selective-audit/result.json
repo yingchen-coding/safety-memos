@@ -1,0 +1,58 @@
+{
+  "experiment_id": "prm800k-selective-process-audit-v1",
+  "experiment_type": "retrospective public-dataset replay",
+  "source": {
+    "dataset": "PRM800K phase-2 test",
+    "url": "https://github.com/openai/prm800k/blob/main/prm800k/data/phase2_test.jsonl",
+    "sha256": "6b172efa884ac8341a946dd82e06947c135b7254109fb3f7aa907c715d98aaad",
+    "license": "MIT"
+  },
+  "claim": "At a preregistered 80% automatic-retention target among outcome-accepted PRM800K solutions, escalating the lowest released PRM scores improves retained-pool process-valid precision by at least 5 percentage points over random escalation while retaining at least 80% of process-valid solutions.",
+  "sample_count": {
+    "dataset_records": 2762,
+    "eligible_process_labels": 2664,
+    "outcome_rejected": 2067,
+    "excluded_finish_reason": 98,
+    "excluded_missing_score": 0,
+    "outcome_accepted": 597,
+    "outcome_accepted_unique_problems": 278,
+    "bootstrap_resamples": 10000
+  },
+  "metrics": {
+    "outcome_accepted": 597,
+    "process_valid": 473,
+    "process_invalid": 124,
+    "retained": 478,
+    "retained_process_valid": 424,
+    "retained_process_invalid": 54,
+    "escalated_for_review": 119,
+    "escalated_process_valid": 49,
+    "escalated_process_invalid": 70,
+    "achieved_retention": 0.8006700167504187,
+    "achieved_review_budget": 0.19932998324958123,
+    "random_expected_retained_precision": 0.7922948073701842,
+    "score_targeted_retained_precision": 0.8870292887029289,
+    "precision_delta_percentage_points": 9.473448133274465,
+    "process_valid_retention": 0.8964059196617337,
+    "invalid_retention_rate": 0.43548387096774194,
+    "random_expected_invalid_retention_rate": 0.8006700167504187,
+    "invalid_retention_relative_reduction_vs_random": 0.45610068835200424,
+    "review_invalid_yield": 0.5882352941176471,
+    "random_expected_review_invalid_yield": 0.20770519262981574,
+    "process_invalid_detection_recall": 0.5645161290322581,
+    "random_expected_process_invalid_detection_recall": 0.19932998324958123,
+    "precision_delta_problem_clustered_95_ci_pp": [
+      7.337276826749428,
+      11.211536769235286
+    ],
+    "prm_score_auroc": 0.847967673736616
+  },
+  "verdict": "BOUNDED_REPLAY_POSITIVE",
+  "limitations": [
+    "This is retrospective replay, not prospective deployment or causal evidence.",
+    "The released score may reflect the iterative process that selected phase-2 data.",
+    "The conservative answer normalizer can reject equivalent answers.",
+    "One review budget does not establish calibration across operating points.",
+    "Prior work establishes the phenomenon; this is not a novelty claim."
+  ]
+}

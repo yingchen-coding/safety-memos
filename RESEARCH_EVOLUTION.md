@@ -44,6 +44,7 @@ never copied into this repository.
 |---|---|---|---|
 | 0 | Evolution contract and automated validator | Replaces final-result-only publishing with versioned, evidence-gated history | Accepted as the public tracking baseline |
 | 1 | [MobileGym loop-detection replay](experiments/mobilegym-loop-detection/) | Exact action identity reduces false alerts from 24 to 4 at matched recall | Accepted as a bounded offline milestone |
+| 2 | [PRM800K selective-audit replay](experiments/prm800k-selective-audit/) | A 19.93% targeted review queue captures 56.45% of flawed outcome accepts | Accepted as a bounded retrospective milestone |
 
 ## Version 0: Evidence-Gated Tracking
 
@@ -110,3 +111,44 @@ dataset hash, dependency version, analysis code, and full-data reproduce command
 This is a bounded offline replay result, not a novelty, online success, policy-learning, or
 cross-model claim. The release contains one successful trajectory, so it cannot establish success
 preservation. No raw trajectory text, screenshots, prompts, or reasoning are published.
+
+## Version 2: Score-Targeted Process Review
+
+### Problem
+
+An outcome checker cannot distinguish a sound solution from flawed reasoning that reaches the same
+final answer. When process review is scarce, random escalation spends most of the budget on
+solutions that human process labels already consider valid.
+
+### Change
+
+This iteration replays a preregistered 80% automatic-retention target on the public PRM800K phase-2
+test split, yielding a 19.93% process-review budget. It compares random escalation with escalating
+the lowest released PRM scores. The analysis freezes the source hash, clusters uncertainty by MATH
+problem, and publishes aggregate outputs only.
+
+### Result
+
+The outcome gate accepts 597 solutions across 278 problems; 124 are process-invalid under the
+released human labels. The bottom-scored 119-solution review queue captures 70 of those 124 errors
+(56.45%), compared with 19.93% expected under random review. Invalid yield rises from 20.77%
+expected to 58.82%. The retained pool's process-valid precision rises from 79.23% to 88.70%, a
++9.47 percentage-point difference with a problem-clustered bootstrap 95% interval of
+[+7.34, +11.21].
+
+### Verification
+
+```bash
+python -m unittest discover -s tests
+python scripts/verify_research_evolution.py
+```
+
+The [experiment artifact](experiments/prm800k-selective-audit/) includes the analysis code,
+dataset hash, frozen result, source license, and full-data reproduce command.
+
+### Boundary
+
+This is retrospective replay using a released score and labels from the same collection pipeline.
+It is not an independent PRM benchmark, prospective review result, causal estimate, new method, or
+cross-domain claim. No problem or solution text, human identifiers, timestamps, or raw labels are
+published.

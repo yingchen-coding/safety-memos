@@ -31,6 +31,10 @@ agent definition scanners.
 - [Research Evolution Log](RESEARCH_EVOLUTION.md)
   A versioned record of hypotheses that failed, evidence upgrades, measured results, and claim
   boundaries. Only reproducible, public-safe milestones are included.
+- [Research Agent Gate Kit](research_agent_gate/)
+  A dependency-free reference implementation of source classification, output release checks, and
+  a local dashboard. It is intentionally a bounded infrastructure prototype, not an autonomous
+  research claim.
 
 ## How To Use
 

@@ -1,0 +1,17 @@
+{
+  "sources": [
+    {
+      "id": "public-agent-safety-paper",
+      "topic": "agent-safety",
+      "title": "Benchmarking indirect prompt injection in tool-using language-model agents",
+      "url": "https://arxiv.org/abs/2401.00001"
+    },
+    {
+      "id": "off-mission-paper",
+      "topic": "agent-safety",
+      "title": "A case study of disk encryption hardware",
+      "url": "https://arxiv.org/abs/2401.00002"
+    }
+  ],
+  "candidate": null
+}

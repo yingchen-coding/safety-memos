@@ -55,6 +55,21 @@ class ResearchAgentGateTest(unittest.TestCase):
         )
         self.assertNotIn("/" + "Users/", page)
 
+    def test_release_guard_blocks_email_with_uncommon_tld(self) -> None:
+        # Regression: the personal-identifier scan previously only matched emails ending in
+        # .com/.org/.net, so addresses like name@lab.io or name@lab.ai slipped past both the
+        # release gate and the dashboard redaction.
+        release = guard_public_output(
+            {
+                "evaluation_verdict": "PASS",
+                "critic_verdict": "KEEP",
+                "reproduce_command": "python analysis.py",
+                "claim_boundary": "contact reviewer@researchlab.io before release",
+            }
+        )
+        self.assertEqual(release["verdict"], "BLOCK")
+        self.assertIn("candidate contains a local path or personal identifier", release["findings"])
+
     def test_no_candidate_is_not_release_ready(self) -> None:
         self.assertEqual(guard_public_output(None)["verdict"], "NOT_APPLICABLE")
 

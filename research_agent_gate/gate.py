@@ -31,7 +31,7 @@ FORBIDDEN_OUTPUT = re.compile(
     re.escape(LOCAL_HOME_PREFIX)
     + "|"
     + re.escape(FILE_URI_PREFIX)
-    + r"|~/.claude|@[\w.-]+\.(?:com|org|net)|"
+    + r"|~/.claude|@[\w.-]+\.[a-z]{2,}|"
     r"(?:\+?1[-.\s]?)?\(?\d{3}\)?[-.\s]\d{3}[-.\s]\d{4}",
     re.IGNORECASE,
 )
